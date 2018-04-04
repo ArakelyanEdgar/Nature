@@ -46,7 +46,7 @@ body {
     background-position: top;
     position: relative;
     /* top left, top right, bottom right, bottom left coordinates in the format <x> <y>  for each corner*/
-    clip-path: polygon(0 0, 100 0, 100% 75vh, 0 100%)
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0 100%);
 }
 
 .logo-path{
@@ -72,6 +72,7 @@ body {
     text-transform: uppercase;
     /* this property is a hack fix for the animation problem where it appears at the top of the screen initially.  */
     backface-visibility: hidden;
+    margin-bottom: 60px;
 }
 
 .heading-primary-main{
@@ -98,7 +99,9 @@ body {
     top: 40%;
     left: 50%;
     /* since position is based on the left edge and top edge, we want it to instead be on the center so we translate the height down 50% and left 50%  where the form is <x>, <y>*/
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    /* text-alight center is applied to inline elements like <a> and <span> */
+    text-align: center;
 }
 
 /* keyframes allows us to define our own animation with what happens at each percentage of time */
@@ -144,4 +147,30 @@ body {
     100% {
         transform: rotate(360deg)
     }
+}
+
+/* pseudoclass link and visited so that we can control the btn before and after clicking*/
+.btn:link, 
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: all .2s;
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.btn:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.btn-white{
+    background-color: white;
+    color:grey;
+    padding: 15px 40px;
+    display: inline-block;
 }
