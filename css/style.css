@@ -140,6 +140,24 @@ body {
         transform: translate(0);
     }
 }
+
+@keyframes moveInButton {
+    0% {
+        opacity: 0;
+        transform: scale(0)
+    }
+
+    80% {
+        opacity: 0.8;
+        transform: scale(1.5)
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
 @keyframes circleFlip {
     50% {
         transform: rotate(180deg)
@@ -149,6 +167,7 @@ body {
     }
 }
 
+
 /* pseudoclass link and visited so that we can control the btn before and after clicking*/
 .btn:link, 
 .btn:visited {
@@ -156,6 +175,9 @@ body {
     text-decoration: none;
     border-radius: 100px;
     transition: all .2s;
+    padding: 15px 30px;
+    display: inline-block;
+    position: relative;
 }
 
 .btn:hover{
@@ -171,6 +193,34 @@ body {
 .btn-white{
     background-color: white;
     color:grey;
-    padding: 15px 40px;
-    display: inline-block;
+    animation: moveInButton 1.18s ease-out;
+    animation-fill-mode: backwards;
 }
+
+.btn::after {
+    /* */
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    /* note that btn has position relative on it */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* z-index is similar to a third dimension */
+    z-index: -1;/
+    /* transition used so that the button doesn't get too big */
+    transition: all .8s;
+}
+
+.btn-white::after {
+    background-color: white;
+}
+
+.btn:hover::after {
+    transform: scale(1.2);
+}
+
+
+
