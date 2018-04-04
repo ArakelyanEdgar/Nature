@@ -1,0 +1,67 @@
+/* letters.css is designed for styling on each letter in the header, I did not want to put it in style.css because it would make too much clutter */
+
+#firstO{
+    color: green;
+    animation-name: OmoveRight;
+    animation-duration: 6s;
+    animation-delay: 2.5s;
+    animation-timing-function: ease-in;
+    display: inline-block;
+}
+
+#secondO{
+    animation-name: OmoveLeft;
+    animation-duration: 6s;
+    animation-delay: 2.5s;
+    animation-timing-function: ease-in;
+    display: inline-block;
+}
+
+#secondO{
+
+}
+
+@keyframes OmoveRight {
+
+    25%{
+        transform: translateX(39%);
+    }
+
+    75%{
+        transform: translateX(39%)
+    }
+
+    90% {
+        transform: translateX(-45%)
+    }
+    
+    95% {
+        transform: translate(25%)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
+
+@keyframes OmoveLeft {
+    25%{
+        transform: translateX(-39%);
+    }
+
+    75%{
+        transform: translateX(-39%)
+    }
+
+    90% {
+        transform: translateX(45%)
+    }
+
+    95% {
+        transform: translate(-25%)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
