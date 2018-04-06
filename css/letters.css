@@ -3,16 +3,16 @@
 #firstO{
     color: green;
     animation-name: OmoveRight;
-    animation-duration: 6s;
-    animation-delay: 2.5s;
+    animation-duration: 4s;
+    animation-delay: 2s;
     animation-timing-function: ease-in;
     display: inline-block;
 }
 
 #secondO{
     animation-name: OmoveLeft;
-    animation-duration: 6s;
-    animation-delay: 2.5s;
+    animation-duration: 4s;
+    animation-delay: 2s;
     animation-timing-function: ease-in;
     display: inline-block;
 }
