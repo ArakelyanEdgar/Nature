@@ -1,95 +1,63 @@
-/* Universal css reset since most browsers give some elements margin and padding */
 *, *::after, *::before {
   margin: 0;
   padding: 0;
-  /* Without box-sizing: border-box width and height properties does not set the width and height properties of an element INCLUDING the borders and padding*/
   box-sizing: border-box;
   box-sizing: inherit; }
 
-/* setting html page root font size , note that 1 rem = 10px since 1 rem is the root font size */
 html {
-  /* placing a relative root font-size for responsive design 100% of the default is 16px and we want 10/16*/
   font-size: 62.5%; }
 
-/* Set universal fonts on body element so that it is inherited down*/
 body {
-  /* Lato is imported in index.html and if not available use sans-serif */
   font-family: 'Lato', sans-serif;
-  /* Specifies the degree of blackness in the font e.g 400 is normal */
   font-weight: 400;
   line-height: 1.7;
   color: #777;
-  /* We want a white border around the background image so we add a padding on the body element */
-  /* note that padding is not inherited */
   padding: 3rem;
   box-sizing: border-box; }
 
 .header {
-  /* 95% viewport height */
   height: 95vh;
-  /* url() @param path imports an image*/
-  /* setting multiple images, with the gradient on top. Look up the params of linear-gradient, goes from first color to second color left to right, by changing opacity of the image on top you can see the second image*/
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
-  /* sets the background to the size of the viewport size of the element */
   background-size: cover;
-  /* Ensures that the image is always at the top of the container */
   background-position: top;
   position: relative;
-  /* top left, top right, bottom right, bottom left coordinates in the format <x> <y>  for each corner*/
   clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0 100%); }
-
-.header__logo-path {
-  /* position absolute makes the positioning of the element to the element it inherits from that has a position: relative, so in this case it is .header */
-  position: absolute;
-  top: 4rem;
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem;
-  /* Calculate the height and let browser calculate width so that it works */
-  width: auto; }
-
-.header__logo:hover {
-  animation: circleFlip 1s; }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__logo:hover {
+    animation: circleFlip 1s; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-  /* this property is a hack fix for the animation problem where it appears at the top of the screen initially.  */
   backface-visibility: hidden;
   margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 3.5rem;
+    animation: moveInLeft 1s ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 1.74rem;
+    animation: moveInRight 1s ease-out; }
 
-.heading-primary--main {
-  /* display: block ensures that the element takes up the whole width thus ensuring next element is below it */
-  display: block;
-  font-size: 6rem;
-  font-weight: 700;
-  letter-spacing: 3.5rem;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: 1.74rem;
-  animation: moveInRight 1s ease-out; }
-
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  /* since position is based on the left edge and top edge, we want it to instead be on the center so we translate the height down 50% and left 50%  where the form is <x>, <y>*/
-  transform: translate(-50%, -50%);
-  /* text-alight center is applied to inline elements like <a> and <span> */
-  text-align: center; }
-
-/* keyframes allows us to define our own animation with what happens at each percentage of time */
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    /* make element be -100px to left */
     transform: translateX(-10rem); }
   80% {
     transform: translateX(1rem); }
@@ -100,7 +68,6 @@ body {
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    /* make element be -100px to left */
     transform: translateX(10rem); }
   60% {
     transform: rotate(3deg); }
@@ -128,9 +95,7 @@ body {
   100% {
     transform: rotate(360deg); } }
 
-/* pseudoclass link and visited so that we can control the btn before and after clicking*/
-.btn:link,
-.btn:visited {
+.btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 10rem;
@@ -139,39 +104,30 @@ body {
   display: inline-block;
   position: relative;
   font-size: 1.6rem; }
-
-.btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-
-.btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn:link:hover, .btn:visited:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:link:hover::after, .btn:visited:hover::after {
+      transform: scale(1.2); }
+  .btn:link:active, .btn:visited:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn:link::after, .btn:visited::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .8s; }
 
 .btn--white {
   background-color: #fff;
   color: #777;
   animation: moveInButton 1.18s ease-out;
   animation-fill-mode: backwards; }
-
-.btn::after {
-  /* */
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  /* note that btn has position relative on it */
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* z-index is similar to a third dimension */
-  z-index: -1;
-  /* transition used so that the button doesn't get too big */
-  transition: all .8s; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-.btn:hover::after {
-  transform: scale(1.2); }
+  .btn--white::after {
+    background-color: #fff; }

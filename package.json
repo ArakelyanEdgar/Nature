@@ -16,7 +16,8 @@
     "url": "https://github.com/ArakelyanEdgar/Nature/issues"
   },
   "homepage": "https://github.com/ArakelyanEdgar/Nature#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "node-sass": "^4.8.3"
   }
 }
