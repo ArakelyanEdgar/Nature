@@ -1,0 +1,42 @@
+.header {
+    /* 95% viewport height */
+    height: 95vh;
+    /* setting multiple images, with the gradient on top. Look up the params of linear-gradient, goes from first color to second color left to right, by changing opacity of the image on top you can see the second image*/
+    background-image: linear-gradient( 
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)), 
+        url('../img/hero.jpg');
+    /* sets the background to the size of the viewport size of the element */
+    background-size: cover;
+    /* Ensures that the image is always at the top of the container */
+    background-position: top;
+    position: relative;
+    /* top left, top right, bottom right, bottom left coordinates in the format <x> <y>  for each corner*/
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75vh, 0 100%);
+
+    &__logo-box {
+        /* position absolute inherits relative positioning to nearest parent with relative position*/
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem;
+    }
+
+    &__logo:hover {
+        animation: circleFlip 1s ;
+    }
+
+    &__text-box{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        /* since position is based on the left edge and top edge, we want it to instead be on the center so we translate the height down 50% and left 50%*/
+        transform: translate(-50%, -50%);
+        /* text-alight center applied to inline elements*/
+        text-align: center;
+    }
+}

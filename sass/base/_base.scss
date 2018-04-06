@@ -1,0 +1,16 @@
+/* Base file holders the universal elements i.e *, html and body */
+
+/* Universal css reset since most browsers give some elements margin and padding */
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    /* Without box-sizing: border-box width and height properties does not set the width and height properties of an element INCLUDING the borders and padding*/
+    box-sizing: border-box;
+    box-sizing: inherit
+}
+
+/* setting html page root font size , note that 1 rem = 10px since 1 rem is the root font size */
+html {
+    /* placing a relative root font-size for responsive design 100% of the default is 16px and we want 10/16*/
+    font-size: 62.5%;
+}
